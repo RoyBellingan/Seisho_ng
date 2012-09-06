@@ -15,16 +15,18 @@ and1::and1(QWidget *parent) :
     file.setFileName(PATH "1");
     file.open(QIODevice::ReadOnly | QIODevice::Text);
 
+    QTextCodec::setCodecForCStrings(QTextCodec::codecForName("UTF-8"));
+    QTextCodec::setCodecForLocale(QTextCodec::codecForName("UTF-8"));
     QTextStream in(&file);
 
     line.clear ();
+
     while (!in.atEnd()) {
         line = line.append (in.readLine());
     }
 
     ui->webView->setHtml (line.toAscii ());
     file.close ();
-
 }
 
 and1::~and1()

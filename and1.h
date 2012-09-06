@@ -6,10 +6,11 @@
 #include <QString>
 #include <QFile>
 #include <QTextStream>
+#include <QTextCodec>
 
 #define PATH "assets/"
 #ifdef Q_OS_ANDROID
-#define PATH "assets:"
+#define PATH "assets:/"
 #endif
 
 
