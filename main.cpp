@@ -3,6 +3,9 @@
 
 int main(int argc, char *argv[])
 {
+#if defined(Q_OS_ANDROID)
+    qApp->addLibraryPath(PATH "plugins/");
+#endif
 
     QApplication a(argc, argv);
     and1 w;

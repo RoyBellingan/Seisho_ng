@@ -29,12 +29,15 @@ symbian {
     TARGET.EPOCHEAPSIZE = 0x020000 0x800000
 }
 
-deployment.files=assets/*
-#deployment.files=assets/body_bg.png
-
+deployment.files=assets/1
+deployment.files=assets/body_bg.png
+deployment.files=assets/italiano.sqlite
+#deployment.files=assets/plugins
 android {
     deployment.path=/assets
+    deployment.path=/assets/plugins/sqldrivers
     }
+
 
 INSTALLS += deployment
 OTHER_FILES += \

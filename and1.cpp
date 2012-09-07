@@ -32,9 +32,7 @@ and1::and1(QWidget *parent) :
 
 #if defined(Q_OS_ANDROID)
     line = line.append ("<h2>android time!</h2>");
-    qApp->addLibraryPath("/data/data/org.kde.necessitas.ministro/files/qt/plugins");
     myDir.cd ("/mnt");
-
 #endif
 /*
        QStringList list = myDir.entryList ();
@@ -49,7 +47,7 @@ and1::and1(QWidget *parent) :
                    line.append ("<br>\n" );
                }
 
-
+*/
 
 
     QSqlDatabase testo = QSqlDatabase::addDatabase("QSQLITE");
@@ -62,12 +60,12 @@ and1::and1(QWidget *parent) :
         //return -1;
     }
 
-/*
+
     for (int var = 0; var < testo.tables().size (); ++var) {
         qDebug(testo.tables().at (var).toAscii ()) ;
     }
-*/
-    /*
+
+
     QSqlQuery query(testo);
     query.exec("select libro, capitolo, versetto, italiano_text from testo where libro = 1 and capitolo = 1 limit 10");
     QSqlRecord record = query.record();
@@ -88,7 +86,7 @@ and1::and1(QWidget *parent) :
 
     }
 
-*/
+
     str=QString::fromUtf8 ("是下記 @#[!£$%&/ #[éé+ùÆæø]");
     line.append(str);
 
