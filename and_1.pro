@@ -32,7 +32,7 @@ symbian {
 deployment.files+=assets/1
 deployment.files+=assets/body_bg.png
 deployment.files+=assets/italiano.sqlite
-deployment.files+=assets/plugins/
+#deployment.files+=assets/plugins/
 android {
     deployment.path=/assets
     }

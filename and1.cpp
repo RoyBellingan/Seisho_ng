@@ -51,7 +51,7 @@ and1::and1(QWidget *parent) :
 
 
     QSqlDatabase testo = QSqlDatabase::addDatabase("QSQLITE");
-    testo.setDatabaseName(PATH "italiano.sqlite");
+    testo.setDatabaseName("/mnt/storage/swap/italiano.sqlite");
 
     //Non funziona!
     if(!testo.open()) {
