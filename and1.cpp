@@ -22,7 +22,7 @@ and1::and1(QWidget *parent) :
 
     QTextStream in(&file);
 
-       int i=1;
+    int i=1;
     //while (!in.atEnd()) {
 
     //}
@@ -40,14 +40,14 @@ and1::and1(QWidget *parent) :
            line.append(list.at(i).toLocal8Bit().constData());
            line.append ("<br>\n" );
        }
-
+*/
        QStringList list2 = QSqlDatabase::drivers();
                for (int i = 0; i < list2.size(); ++i){
                    line.append(list2.at(i).toLocal8Bit().constData());
                    line.append ("<br>\n" );
                }
 
-*/
+
 
 
     QSqlDatabase testo = QSqlDatabase::addDatabase("QSQLITE");
