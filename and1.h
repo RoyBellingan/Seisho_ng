@@ -1,17 +1,31 @@
 #ifndef AND1_H
 #define AND1_H
 
-#include <QMainWindow>
+#include <iostream>
 #include <string>
+#include <sstream>
+
+#include <QMainWindow>
 #include <QString>
 #include <QFile>
 #include <QTextStream>
 #include <QTextCodec>
+#include <QDir>
 
+#include <QtSql/QSqlDatabase>
+#include <QtSql/QSqlQuery>
+#include <QtSql/QSqlRecord>
+#include <QVariant>
+
+
+#ifdef Q_OS_UNIX
 #define PATH "assets/"
+#endif
+
 #ifdef Q_OS_ANDROID
 #define PATH "assets:/"
 #endif
+
 
 
 

@@ -3,6 +3,7 @@
 
 int main(int argc, char *argv[])
 {
+
     QApplication a(argc, argv);
     and1 w;
 #if defined(Q_WS_S60)
@@ -13,3 +14,12 @@ int main(int argc, char *argv[])
     
     return a.exec();
 }
+
+
+/**
+ Todo
+
+ Aggiungi e leggi dal db sqlite
+
+ Poi smetti android e passa a smazzarti come fare un mini seisho
+ */
