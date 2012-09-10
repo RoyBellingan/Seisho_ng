@@ -59,9 +59,10 @@ and1::and1(QWidget *parent) :   QMainWindow(parent),   ui(new Ui::and1){
     ui->main_view->setHtml (str.toAscii ());
     file.close ();
 
-
-
-
+//Configuro l'event filter
+    KeyPressEater *keyPressEater = new KeyPressEater();
+    ui->main_view->installEventFilter(keyPressEater);
+    //ui->->installEventFilter(keyPressEater);
 
 
     //Inizio il database
@@ -118,3 +119,135 @@ and1::~and1()
 }
 
 
+/** Se faccio click su uno dei link
+ */
+void and1::on_main_view_linkClicked(const QUrl &arg1)
+{
+    //TODO valuta una tabella di lookup ???
+    //accedo al db e vedo quanti capitoli ha questo libro
+
+    str.clear ();
+    str.append ("select count(capitolo) from testo where libro = ");
+    str.append (arg1.path ());
+    str.append (" AND versetto =1");
+    qDebug (str.toAscii ());
+
+
+    QSqlQuery query(testo);
+    query.exec(str.toAscii ());
+    query.next ();
+    QVariant val =  query.value(0);
+
+
+    QString str2;
+
+
+    QString s = QString::number(val.toInt ());
+
+
+
+
+    qDebug (s.toAscii ());
+
+
+    str.clear ();
+    str.append ("<style>   #bla {color: #FFDCA8;}   </style> <div id=\"bla\">");
+
+
+
+
+
+
+    int i=0;
+
+
+    for (int j = 1; j < val.toInt ()+1; ++j) {
+        i++;
+        if (i>10){
+            i=1;
+            str.append("<br>");
+        }
+
+        if (j<10){
+            str.append("&nbsp;&nbsp;");
+        }else{
+            str.append(" ");
+        }
+
+
+            str.append(QString::number(j));
+            str.append(" ");
+    }
+
+    str.append ("</div>");
+
+    ui->popup_view->setHtml (str.toAscii ());
+
+    ui->popup_view->move (ui->main_view->width ()/2 - 150 ,ui->main_view->height ()/2 - 150 );
+    ui->popup_view->show();
+
+}
+
+
+
+
+
+
+
+
+
+/** Se faccio click sulla FINESTRA (non il frame web) NON sui link
+ */
+
+bool and1::event(QEvent *event) {
+
+    if (event->type() == QEvent::MouseButtonPress) {
+        ui->popup_view->hide();
+        return true;
+    }
+    return QWidget::event(event);
+}
+
+
+bool KeyPressEater::eventFilter(QObject *obj, QEvent *event) {
+
+    and1* w = and1::getInstance();
+
+    switch (event->type()) {
+
+    case QEvent::KeyPress: {
+        //QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
+        //qDebug("Ate key press %d", keyEvent->key());
+        return true;
+        break;
+    }
+        /*
+         case QEvent::MouseButtonPress: {
+         //  QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
+         w->ui->hint->hide();
+         qDebug("Ate mouse press!!");
+         return true;
+         break;
+         }
+         */
+        //TODO meglio on release
+    //case QEvent::MouseButtonPress: {
+        case QEvent::MouseButtonRelease: {
+        //  QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
+
+        if (w->ui->popup_view->isVisible()) {
+            w->ui->popup_view->hide();
+            //qDebug("Ate mouse press!!");
+            return QObject::eventFilter(obj, event);
+        } else {
+            return QObject::eventFilter(obj, event);
+        }
+        break;
+    }
+
+    default:
+        return QObject::eventFilter(obj, event);
+        break;
+    }
+
+}

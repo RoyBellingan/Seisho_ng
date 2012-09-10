@@ -26,6 +26,16 @@ namespace Ui {
 class and1;
 }
 
+
+class KeyPressEater : public QObject
+{
+    Q_OBJECT
+
+
+protected:
+    bool eventFilter(QObject *obj, QEvent *event);
+};
+
 class and1 : public QMainWindow
 {
     Q_OBJECT
@@ -43,10 +53,14 @@ public:
         return instance;
     }
 
-   // bool event(QEvent *event);
+    //
+   bool event(QEvent *event);
+
 private slots:
 
     //void on_view_linkClicked(const QUrl &arg1);
+
+    void on_main_view_linkClicked(const QUrl &arg1);
 
 private:
      static and1* instance;
@@ -61,5 +75,7 @@ private:
 
     QFile file;
 };
+
+
 
 #endif // AND1_H
