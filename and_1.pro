@@ -29,16 +29,7 @@ symbian {
     TARGET.EPOCHEAPSIZE = 0x020000 0x800000
 }
 
-#deployment.files+=assets/1
-#deployment.files+=assets/body_bg.png
-#deployment.files+=assets/italiano.sqlite
-#deployment.files+=assets/plugins/
-#android {
-#    deployment.path=/assets
-#    }
 
-
-#INSTALLS += deployment
 OTHER_FILES += \
     android/res/values-id/strings.xml \
     android/res/values-ms/strings.xml \

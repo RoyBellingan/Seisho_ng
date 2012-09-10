@@ -30,7 +30,7 @@ and1::and1(QWidget *parent) :   QMainWindow(parent),   ui(new Ui::and1){
     str.append (in.readAll ());
 
     //Appendo una stringa per controllare che siano ok gli utf 8...
-    str.append(QString::fromUtf8 ("是下記 @#[!£$%&/ #[éé+ùÆæø] ﬖﬓﬅשׁהּמּשּקּनऩझऑसॐ३ॻປຜຝນᚓᚔⰇⰆⱙΏΛΜϢϮϫᚣᚻᛓᛟᛞრ⣩❺❮❢ϭמשק  "));
+    //str.append(QString::fromUtf8 ("是下記 @#[!£$%&/ #[éé+ùÆæø] ﬖﬓﬅשׁהּמּשּקּनऩझऑसॐ३ॻປຜຝນᚓᚔⰇⰆⱙΏΛΜϢϮϫᚣᚻᛓᛟᛞრ⣩❺❮❢ϭמשק  "));
 
 
     //Modifico il frame principale per delegare i link
@@ -42,7 +42,7 @@ and1::and1(QWidget *parent) :   QMainWindow(parent),   ui(new Ui::and1){
     ui->main_view->setHtml (str.toAscii ());
     file.close ();
 
-//Configuro l'event filter
+    //Configuro l'event filter
     KeyPressEater *keyPressEater = new KeyPressEater();
     ui->main_view->installEventFilter(keyPressEater);
     //ui->->installEventFilter(keyPressEater);
@@ -56,41 +56,14 @@ and1::and1(QWidget *parent) :   QMainWindow(parent),   ui(new Ui::and1){
     //Non funziona!
     if(!testo.open()) {
 
-//        ui->log->appendPlainText("KEK db owned");
+        //        ui->log->appendPlainText("KEK db owned");
 
     }
 
-    QSqlQuery query(testo);
-    query.exec("select libro, capitolo, versetto, italiano_text from testo where libro = 1 and capitolo = 1 limit 10");
-    QSqlRecord record = query.record();
-/*
-    for(int i = 0; i < record.count(); i++) {
-        line.append(record.fieldName(i));
-    }
-*/
-//str.clear ();
-    while(query.next()) {
-        //for(int i = 0; i < record.count(); i++) {
+    //Qualche static
 
-            QVariant val =  query.value(1);
-            str.append("\n<br>capitolo: ");
-            str.append(val.toString ());
-
-            val =  query.value(2);
-            str.append(" Versetto: ");
-            str.append(val.toString ());
-            str.append("<br>");
-
-            val =  query.value(3);
-
-            //qDebug(val.toString ().toLatin1 ());
-            //st = val.toString ();
-
-            str.append(val.toString ());
-        //}
-
-    }
-   //ui->main_view->setHtml (str.toAscii ());
+    aresx=ui->main_view->width ()/2;
+    aresy=ui->main_view->height ()/2;
 
 
 
@@ -113,7 +86,7 @@ void and1::on_main_view_linkClicked(const QUrl &arg1)
     str.append ("select count(capitolo) from testo where libro = ");
     str.append (arg1.path ());
     str.append (" AND versetto =1");
-    qDebug (str.toAscii ());
+    //qDebug (str.toAscii ());
 
 
     QSqlQuery query(testo);
@@ -122,42 +95,59 @@ void and1::on_main_view_linkClicked(const QUrl &arg1)
     QVariant val =  query.value(0);
 
     str.clear ();
-    str.append ("<style>   #bla {color: #FFDCA8; font-family:\"Droid Sans Mono\"}   </style> <div id=\"bla\"><br>");
+    str.append ("<style>   #bla {color: #FFDCA8; font-family:\"Droid Sans Mono\"; line-height: 180%; font-size:26px; font-weight:800;}   </style> <div id=\"bla\"><br>");
 
     int i=0;
     int sizx = 0,sizy;
 
-    int j;
+    int j,f=0;
+
+
+    if (val.toInt ()>100){
+        //Ma sono i salmi!
+        f=1;
+    }
+
+
     for ( j = 1; j < val.toInt ()+1; ++j) {
         i++;
         if (i>10){
             i=1;
             str.append("<br>");
-
         }
 
+        if (f==1 && j < 100){
+            str.append("&nbsp");
+        }
         if (j<10){
             str.append("&nbsp");
         }else{
             str.append("");
         }
 
-            str.append(QString::number(j));
-            str.append("&nbsp;");
+        str.append(QString::number(j));
+        str.append("&nbsp;");
     }
 
-    if (j<11){
-        sizx=j*30-20;
-    }
-    if(j==11){
-        sizx=310;
-    }
-    if(j>11){
-        sizx=330;
-    }
+j--;
 
-    sizy=((j/10)-1)*20+110;
 
+
+        if (f==1){
+            sizy=755;
+            sizx=670;
+        }else{
+            sizy=(ceil((j/10)-1))*50+200;
+            if (j<10){
+                sizx=j*50+15;
+            }
+            if(j==10){
+                sizx=500;
+            }
+            if(j>10){
+                sizx=510;
+            }
+        }
 
     ui->popup_view->setFixedWidth (sizx);
     ui->popup_view->setFixedHeight (sizy);
@@ -166,7 +156,7 @@ void and1::on_main_view_linkClicked(const QUrl &arg1)
 
     ui->popup_view->setHtml (str.toAscii ());
 
-    ui->popup_view->move (ui->main_view->width ()/2 - 150 ,ui->main_view->height ()/2 - 150 );
+    ui->popup_view->move (aresx - sizx/2 , aresy - sizy/2 +25 );
     ui->popup_view->show();
 
 }
@@ -214,8 +204,8 @@ bool KeyPressEater::eventFilter(QObject *obj, QEvent *event) {
          }
          */
         //TODO meglio on release
-    //case QEvent::MouseButtonPress: {
-        case QEvent::MouseButtonRelease: {
+        //case QEvent::MouseButtonPress: {
+    case QEvent::MouseButtonRelease: {
         //  QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
 
         if (w->ui->popup_view->isVisible()) {

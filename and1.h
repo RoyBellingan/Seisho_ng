@@ -19,12 +19,13 @@
 
 #include <QUrl>
 #include <QWebFrame>
+#include <math.h>
 
 
 #define null 0
 
 #ifdef Q_OS_UNIX
-#define PATH "assets/"
+#define PATH "static/"
 #endif
 
 #ifdef Q_OS_ANDROID
@@ -68,6 +69,10 @@ public:
 
     //
    bool event(QEvent *event);
+   //mezza risoluzione asse x
+   int aresx;
+   //mezza risoluzione asse y
+   int aresy;
 
 private slots:
 
