@@ -91,8 +91,13 @@ private slots:
 
     void on_book_name_linkActivated(const QString &link);
 
+    void on_homizzah_linkActivated(const QString &link);
+
 private:
     void init_text();
+
+    void capitolibox(QString libro);
+
      static and1* instance;
 
     // Una stringa per fare gli swap al volo ecc ecc

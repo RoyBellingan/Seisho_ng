@@ -34,6 +34,7 @@ and1::and1(QWidget *parent) :   QMainWindow(parent),   ui(new Ui::and1){
     ui->main_view->setPage (page);
     ui->main_view->page ()->setLinkDelegationPolicy (ui->main_view->page ()->DelegateAllLinks);
 
+
     QWebPage *page2=new QWebPage();
     ui->popup_view->setPage (page2);
     ui->popup_view->page ()->setLinkDelegationPolicy (ui->main_view->page ()->DelegateAllLinks);
@@ -76,16 +77,22 @@ and1::~and1()
  */
 void and1::on_main_view_linkClicked(const QUrl &arg1)
 {
+capitolibox (arg1.path ());
+
+}
+
+
+void and1::capitolibox(QString libro){
 
     //farewell cookies
-    id_book=arg1.path ().toInt ();
+    id_book=libro.toInt ();
 
     //TODO valuta una tabella di lookup ???
     //accedo al db e vedo quanti capitoli ha questo libro
 
     str.clear ();
     str.append ("select count(capitolo) from testo where libro = ");
-    str.append (arg1.path ());
+    str.append (libro);
     str.append (" AND versetto =1");
     //qDebug (str.toAscii ());
 
@@ -165,9 +172,7 @@ j--;
     ui->popup_view->move (aresx - sizx/2 , aresy - sizy/2 +25 );
     ui->popup_view->show();
 
-
 }
-
 
 void and1::init_text(){
 
@@ -185,6 +190,10 @@ void and1::init_text(){
     //E scrivo la "index"
     ui->main_view->setHtml (str.toAscii ());
     file.close ();
+
+    ui->homizzah->hide ();
+    ui->book_name->hide();
+    ui->main_view->page ()->mainFrame ()->setScrollBarPolicy ( Qt::Horizontal, Qt::ScrollBarAlwaysOff);
 
 }
 
@@ -279,6 +288,16 @@ void and1::on_popup_view_linkClicked(const QUrl &arg1)
     ui->book_name->setText (str.toAscii ());
     ui->book_name->show ();
 
+    str.clear ();
+
+    str.append ("<style> a{color: #5BB6E4; text-decoration:none} </style>  <a href=\"some\">");
+    str.append("Homizzah !");
+    str.append ("</a>");
+
+    ui->homizzah->setText (str.toAscii ());
+    ui->homizzah->show ();
+
+
 
     str.clear ();
     str.append ("select italiano_text from testo where libro = ");
@@ -299,15 +318,27 @@ void and1::on_popup_view_linkClicked(const QUrl &arg1)
         str.append ("<br>");
         str.append (val.toString ());
         i++;
+
     }
+    str.replace (QString("\\n"),QString("<br>"));
     str.append("</div>");
 
     //qDebug (val.toString ().toAscii ());
-    ui->main_view->setHtml (str.toAscii ());
+    ui->main_view->page ()->mainFrame ()->setScrollBarPolicy ( Qt::Horizontal, Qt::ScrollBarAlwaysOff);
+    ui->main_view->setHtml (str);
+
 
 }
 
 void and1::on_book_name_linkActivated(const QString &link)
+{
+
+    str.clear ();
+    str.append (QString::number(id_book));
+    capitolibox (str);
+}
+
+void and1::on_homizzah_linkActivated(const QString &link)
 {
     init_text();
 }
