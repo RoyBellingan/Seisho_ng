@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/static">
+        <file>assets/1</file>
+        <file>assets/body_bg.png</file>
+    </qresource>
+    <qresource prefix="/sqlite">
+        <file>assets/italiano.sqlite</file>
+    </qresource>
+</RCC>

@@ -29,16 +29,16 @@ symbian {
     TARGET.EPOCHEAPSIZE = 0x020000 0x800000
 }
 
-deployment.files+=assets/1
-deployment.files+=assets/body_bg.png
-deployment.files+=assets/italiano.sqlite
+#deployment.files+=assets/1
+#deployment.files+=assets/body_bg.png
+#deployment.files+=assets/italiano.sqlite
 #deployment.files+=assets/plugins/
-android {
-    deployment.path=/assets
-    }
+#android {
+#    deployment.path=/assets
+#    }
 
 
-INSTALLS += deployment
+#INSTALLS += deployment
 OTHER_FILES += \
     android/res/values-id/strings.xml \
     android/res/values-ms/strings.xml \
@@ -139,3 +139,6 @@ OTHER_FILES += \
     android/src/org/kde/necessitas/origo/QtApplication.java \
     android/src/org/kde/necessitas/origo/QtActivity.java \
     android/version.xml
+
+RESOURCES += \
+    resource1.qrc

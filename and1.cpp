@@ -7,7 +7,7 @@ and1::and1(QWidget *parent) :
 {
 
     QPalette* palette = new QPalette();
-    palette->setBrush(QPalette::Background,*(new QBrush(*(new QPixmap(PATH "body_bg.png")))));
+    palette->setBrush(QPalette::Background,*(new QBrush(*(new QPixmap(":/static/body_bg.png")))));
     setPalette(*palette);
 
     QTextCodec::setCodecForCStrings(QTextCodec::codecForName("UTF-8"));
@@ -17,7 +17,7 @@ and1::and1(QWidget *parent) :
 
     QString str;
 
-    file.setFileName(PATH "italiano.sqlite");
+    file.setFileName(":/sqlite/italiano.sqlite");
     file.open(QIODevice::ReadOnly | QIODevice::Text);
 
     QTextStream in(&file);
@@ -51,7 +51,7 @@ and1::and1(QWidget *parent) :
 
 
     QSqlDatabase testo = QSqlDatabase::addDatabase("QSQLITE");
-    testo.setDatabaseName("/mnt/storage/swap/italiano.sqlite");
+    testo.setDatabaseName(":/sqlite/italiano.sqlite");
 
     //Non funziona!
     if(!testo.open()) {
