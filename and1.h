@@ -7,6 +7,7 @@
 
 #include <QMainWindow>
 #include <QString>
+#include <QStringList>
 #include <QFile>
 #include <QTextStream>
 #include <QTextCodec>
@@ -74,21 +75,30 @@ public:
    //mezza risoluzione asse y
    int aresy;
 
+   //libro scelto
+   int id_book;
+
+   //capitolo scelto
+   int id_chapter;
+
 private slots:
 
     //void on_view_linkClicked(const QUrl &arg1);
 
     void on_main_view_linkClicked(const QUrl &arg1);
 
+    void on_popup_view_linkClicked(const QUrl &arg1);
+
+    void on_book_name_linkActivated(const QString &link);
+
 private:
+    void init_text();
      static and1* instance;
 
     // Una stringa per fare gli swap al volo ecc ecc
     QString str;
 
     QSqlDatabase testo;
-
-
 
 
     QFile file;

@@ -29,6 +29,9 @@
       <height>641</height>
      </rect>
     </property>
+    <property name="contextMenuPolicy">
+     <enum>Qt::NoContextMenu</enum>
+    </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
     </property>
@@ -42,13 +45,19 @@
     </property>
    </widget>
    <widget class="QWebView" name="popup_view">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
     <property name="geometry">
      <rect>
-      <x>100</x>
+      <x>50</x>
       <y>20</y>
-      <width>341</width>
+      <width>121</width>
       <height>71</height>
      </rect>
+    </property>
+    <property name="contextMenuPolicy">
+     <enum>Qt::NoContextMenu</enum>
     </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgba(255, 255, 255, 150);</string>
@@ -57,6 +66,37 @@
      <url>
       <string>about:blank</string>
      </url>
+    </property>
+   </widget>
+   <widget class="QLabel" name="book_name">
+    <property name="geometry">
+     <rect>
+      <x>540</x>
+      <y>30</y>
+      <width>221</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Droid Serif</family>
+      <pointsize>26</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+      <underline>false</underline>
+      <strikeout>false</strikeout>
+      <stylestrategy>PreferAntialias</stylestrategy>
+      <kerning>true</kerning>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: #5BB6E4;</string>
+    </property>
+    <property name="text">
+     <string>Genesi</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
     </property>
    </widget>
   </widget>
