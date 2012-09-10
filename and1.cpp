@@ -2,29 +2,12 @@
 #include "ui_and1.h"
 
 
-
-class MyWebPage : public QWebPage {
-protected:
-   virtual void javaScriptAlert (QWebFrame *originatingFrame, const QString &msg) {
-    qDebug (msg.toAscii ());
-and1* w = and1::getInstance();
-
-    //w->ui->popup_view->move();
-    w->ui->popup_view->setHtml("grossstatgefster");
-    //w->ui->popup_view->document ()->adjustSize ();
-    //w->ui->popup_view->resize (w->ui->hint->document ()->idealWidth ()+22,w->ui->hint->document ()->size ().height ()+22);
-    w->ui->popup_view->show();
-
-    }
-};
-
-
 and1::and1(QWidget *parent) :   QMainWindow(parent),   ui(new Ui::and1){
 
 
     //Setto l'immagine di sfondo
     QPalette* palette = new QPalette();
-    palette->setBrush(QPalette::Background,*(new QBrush(*(new QPixmap("assets/body_bg.png")))));
+    palette->setBrush(QPalette::Background,*(new QBrush(*(new QPixmap(PATH "body_bg.png")))));
     setPalette(*palette);
 
     //E creo la UI, altrimenti non posso caricare il testo ecc...
@@ -37,7 +20,7 @@ and1::and1(QWidget *parent) :   QMainWindow(parent),   ui(new Ui::and1){
 
 
     //Apro il file con l'html della home page
-    file.setFileName("assets/1");
+    file.setFileName(PATH "/1");
 
     //TODO check se il file è aperto per davvero o no
     file.open(QIODevice::ReadOnly | QIODevice::Text);
@@ -51,7 +34,7 @@ and1::and1(QWidget *parent) :   QMainWindow(parent),   ui(new Ui::and1){
 
 
     //Modifico il frame principale per delegare i link
-    MyWebPage *page=new MyWebPage();
+    QWebPage *page=new QWebPage();
     ui->main_view->setPage (page);
     ui->main_view->page ()->setLinkDelegationPolicy (ui->main_view->page ()->DelegateAllLinks);
 
@@ -68,7 +51,7 @@ and1::and1(QWidget *parent) :   QMainWindow(parent),   ui(new Ui::and1){
     //Inizio il database
 
     testo = QSqlDatabase::addDatabase("QSQLITE");
-    testo.setDatabaseName("assets/italiano.sqlite");
+    testo.setDatabaseName(PATH "italiano.sqlite");
 
     //Non funziona!
     if(!testo.open()) {
@@ -138,46 +121,46 @@ void and1::on_main_view_linkClicked(const QUrl &arg1)
     query.next ();
     QVariant val =  query.value(0);
 
-
-    QString str2;
-
-
-    QString s = QString::number(val.toInt ());
-
-
-
-
-    qDebug (s.toAscii ());
-
-
     str.clear ();
-    str.append ("<style>   #bla {color: #FFDCA8;}   </style> <div id=\"bla\">");
-
-
-
-
-
+    str.append ("<style>   #bla {color: #FFDCA8; font-family:\"Droid Sans Mono\"}   </style> <div id=\"bla\"><br>");
 
     int i=0;
+    int sizx = 0,sizy;
 
-
-    for (int j = 1; j < val.toInt ()+1; ++j) {
+    int j;
+    for ( j = 1; j < val.toInt ()+1; ++j) {
         i++;
         if (i>10){
             i=1;
             str.append("<br>");
+
         }
 
         if (j<10){
-            str.append("&nbsp;&nbsp;");
+            str.append("&nbsp");
         }else{
-            str.append(" ");
+            str.append("");
         }
 
-
             str.append(QString::number(j));
-            str.append(" ");
+            str.append("&nbsp;");
     }
+
+    if (j<11){
+        sizx=j*30-20;
+    }
+    if(j==11){
+        sizx=310;
+    }
+    if(j>11){
+        sizx=330;
+    }
+
+    sizy=((j/10)-1)*20+110;
+
+
+    ui->popup_view->setFixedWidth (sizx);
+    ui->popup_view->setFixedHeight (sizy);
 
     str.append ("</div>");
 

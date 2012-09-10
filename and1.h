@@ -18,9 +18,22 @@
 #include <QVariant>
 
 #include <QUrl>
+#include <QWebFrame>
 
 
 #define null 0
+
+#ifdef Q_OS_UNIX
+#define PATH "assets/"
+#endif
+
+#ifdef Q_OS_ANDROID
+#define PATH "/mnt/sdcard/seisho_m/"
+#endif
+
+
+
+
 
 namespace Ui {
 class and1;
