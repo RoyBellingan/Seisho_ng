@@ -20,13 +20,13 @@
    <string notr="true">background-image: url(&quot;assets:/body_bg.png&quot;);</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QWebView" name="webView">
+   <widget class="QWebView" name="main_view">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>80</y>
+      <y>100</y>
       <width>1261</width>
-      <height>661</height>
+      <height>641</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -39,6 +39,24 @@
     </property>
     <property name="renderHints">
      <set>QPainter::HighQualityAntialiasing|QPainter::SmoothPixmapTransform|QPainter::TextAntialiasing</set>
+    </property>
+   </widget>
+   <widget class="QWebView" name="popup_view">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>20</y>
+      <width>300</width>
+      <height>200</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
+    </property>
+    <property name="url">
+     <url>
+      <string>about:blank</string>
+     </url>
     </property>
    </widget>
   </widget>

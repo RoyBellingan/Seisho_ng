@@ -17,17 +17,10 @@
 #include <QtSql/QSqlRecord>
 #include <QVariant>
 
-
-#ifdef Q_OS_UNIX
-#define PATH "assets/"
-#endif
-
-#ifdef Q_OS_ANDROID
-#define PATH "assets:/"
-#endif
+#include <QUrl>
 
 
-
+#define null 0
 
 namespace Ui {
 class and1;
@@ -38,17 +31,34 @@ class and1 : public QMainWindow
     Q_OBJECT
     
 public:
+    Ui::and1 *ui;
     explicit and1(QWidget *parent = 0);
     ~and1();
 
-    QString line;
+    static and1* getInstance()
+    {
+        if(instance == null){
+            instance = new and1();
+        }
+        return instance;
+    }
 
-    
+   // bool event(QEvent *event);
 private slots:
 
+    //void on_view_linkClicked(const QUrl &arg1);
 
 private:
-    Ui::and1 *ui;
+     static and1* instance;
+
+    // Una stringa per fare gli swap al volo ecc ecc
+    QString str;
+
+    QSqlDatabase testo;
+
+
+
+
     QFile file;
 };
 

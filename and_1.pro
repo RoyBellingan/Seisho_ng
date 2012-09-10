@@ -140,5 +140,4 @@ OTHER_FILES += \
     android/src/org/kde/necessitas/origo/QtActivity.java \
     android/version.xml
 
-RESOURCES += \
-    resource1.qrc
+RESOURCES +=
