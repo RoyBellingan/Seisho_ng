@@ -270,7 +270,7 @@ void and1::on_popup_view_linkClicked(const QUrl &arg1)
     str.clear ();
     str.append ("select nome from libri_ita where id_libro = ");
     str.append (QString::number(id_book));
-    qDebug (str.toAscii ());
+    //qDebug (str.toAscii ());
 
 
     QSqlQuery query(testo);
@@ -278,7 +278,7 @@ void and1::on_popup_view_linkClicked(const QUrl &arg1)
     query.next ();
     QVariant val =  query.value(0);
 
-    qDebug (val.toString ().toAscii ());
+    //qDebug (val.toString ().toAscii ());
 
     str.clear ();
 
@@ -304,12 +304,12 @@ void and1::on_popup_view_linkClicked(const QUrl &arg1)
     str.append (QString::number(id_book));
     str.append (" and capitolo = ");
     str.append (arg1.path ());
-    qDebug (str.toAscii ());
+    //qDebug (str.toAscii ());
     query.exec(str.toAscii ());
 
     int i=1;
     str.clear ();
-    str.append ("<style>   #bla { font-family:\"Helvetica\"; line-height: 140%; font-size:18px; font-weight:400; color:silver} </style><div id=\"bla\"2>");
+    str.append ("<style>::-webkit-scrollbar {width: 50px;} ::-webkit-scrollbar-track {-webkit-box-shadow: inset 0 0 6px rgba(200,200,180,1); border-radius: 10px; }::-webkit-scrollbar-thumb {border-radius: 10px;-webkit-box-shadow: inset 0 0 6px rgba(180,180,120,1);} #bla { font-family:\"Helvetica\"; line-height: 140%; font-size:18px; font-weight:400; color:silver} </style><div id=\"bla\"2>");
     while (query.next ()){
         val =  query.value(0);
 

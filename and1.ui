@@ -44,7 +44,7 @@
      </url>
     </property>
     <property name="renderHints">
-     <set>QPainter::HighQualityAntialiasing|QPainter::SmoothPixmapTransform|QPainter::TextAntialiasing</set>
+     <set>QPainter::TextAntialiasing</set>
     </property>
    </widget>
    <widget class="QWebView" name="popup_view">

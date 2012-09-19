@@ -30,7 +30,7 @@
 #endif
 
 #ifdef Q_OS_ANDROID
-#define PATH "/mnt/sdcard/seisho_m/"
+#define PATH "/mnt/storage/seisho/"
 #endif
 
 
