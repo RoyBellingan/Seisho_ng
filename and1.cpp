@@ -135,6 +135,9 @@ void and1::capitolibox(QString libro){
             str.append("<br>");
         }
 
+        str.append("<a href=\"");
+        str.append(QString::number(j));
+        str.append("\">");
         if (f==1 && j < 100){
             str.append("&nbsp");
         }
@@ -143,12 +146,10 @@ void and1::capitolibox(QString libro){
         }else{
             str.append("");
         }
-        str.append("<a href=\"");
         str.append(QString::number(j));
-        str.append("\">");
-        str.append(QString::number(j));
-        str.append("</a>");
         str.append("&nbsp;");
+        str.append("</a>");
+
     }
 
 j--;
