@@ -372,7 +372,7 @@ void and1::on_popup_view_linkClicked(const QUrl &arg1)
     str.replace (QString("\\n"),QString("<br>"));
     str.append("</div>");
 
-    qDebug (str.toAscii ());
+   // qDebug (str.toAscii ());
     ui->main_view->page ()->mainFrame ()->setScrollBarPolicy ( Qt::Horizontal, Qt::ScrollBarAlwaysOff);
     ui->main_view->setHtml (str);
 
