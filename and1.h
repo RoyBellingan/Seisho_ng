@@ -81,6 +81,9 @@ public:
    //capitolo scelto
    int id_chapter;
 
+   //Ritorna alla home
+   void home();
+
 private slots:
 
     //void on_view_linkClicked(const QUrl &arg1);
@@ -96,12 +99,22 @@ private slots:
 private:
     void init_text();
 
+
     void capitolibox(QString libro);
 
-     static and1* instance;
+    static and1* instance;
+
+    //Il css
+    QString head;
+
+    //Il css versetti
+    QString css_versetti;
+
+    //La home
+    QString home_html;
 
     // Una stringa per fare gli swap al volo ecc ecc
-    QString str;
+    QString str,str2;
 
     QSqlDatabase testo;
 

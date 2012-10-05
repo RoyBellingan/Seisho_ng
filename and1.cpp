@@ -2,6 +2,11 @@
 #include "ui_and1.h"
 
 
+
+//https://groups.google.com/forum/?fromgroups=#!topic/android-qt/PYHwZSCZvCo per lo scroll
+
+
+
 and1::and1(QWidget *parent) :   QMainWindow(parent),   ui(new Ui::and1){
 
 
@@ -23,16 +28,17 @@ and1::and1(QWidget *parent) :   QMainWindow(parent),   ui(new Ui::and1){
     QTextCodec::setCodecForLocale(QTextCodec::codecForName("UTF-8"));
 
 
-
-
     //Appendo una stringa per controllare che siano ok gli utf 8...
     //str.append(QString::fromUtf8 ("是下記 @#[!£$%&/ #[éé+ùÆæø] ﬖﬓﬅשׁהּמּשּקּनऩझऑसॐ३ॻປຜຝນᚓᚔⰇⰆⱙΏΛΜϢϮϫᚣᚻᛓᛟᛞრ⣩❺❮❢ϭמשק  "));
 
 
     //Modifico il frame principale per delegare i link
     QWebPage *page=new QWebPage();
+   // QUrl url = QUrl("http://localhost");
+   // ui->main_view->load (url);
     ui->main_view->setPage (page);
     ui->main_view->page ()->setLinkDelegationPolicy (ui->main_view->page ()->DelegateAllLinks);
+
 
 
     QWebPage *page2=new QWebPage();
@@ -46,8 +52,11 @@ and1::and1(QWidget *parent) :   QMainWindow(parent),   ui(new Ui::and1){
     //ui->->installEventFilter(keyPressEater);
 
 
-    //Inizio il database
+    //Intanto inizializzo la home
+    init_text ();
 
+
+    //Inizio il database
     testo = QSqlDatabase::addDatabase("QSQLITE");
     testo.setDatabaseName(PATH "italiano.sqlite");
 
@@ -62,8 +71,6 @@ and1::and1(QWidget *parent) :   QMainWindow(parent),   ui(new Ui::and1){
 
     aresx=ui->main_view->width ()/2;
     aresy=ui->main_view->height ()/2;
-
-init_text ();
 
 }
 
@@ -82,6 +89,7 @@ capitolibox (arg1.path ());
 }
 
 
+//Il boxino coi capitoli
 void and1::capitolibox(QString libro){
 
     //farewell cookies
@@ -104,7 +112,8 @@ void and1::capitolibox(QString libro){
     QVariant val =  query.value(0);
 
     str.clear ();
-    str.append ("<style>   #bla { font-family:\"Droid Sans Mono\"; line-height: 180%; font-size:26px; font-weight:800;}  #bla a{color: #FFDCA8; text-decoration:none} </style> <div id=\"bla\"><br>");
+    str.append (head);
+    str.append ("<body><div id=\"bla\"><br>");
 
     int i=0;
     int sizx = 0,sizy;
@@ -165,7 +174,8 @@ j--;
     ui->popup_view->setFixedWidth (sizx);
     ui->popup_view->setFixedHeight (sizy);
 
-    str.append ("</div>");
+    str.append ("</div></body>");
+    //qDebug (str.toAscii ());
 
     ui->popup_view->setHtml (str.toAscii ());
 
@@ -174,9 +184,22 @@ j--;
 
 }
 
+//Inizializza il testo e altre cosine
 void and1::init_text(){
 
-    str.clear ();
+    //Apro il file con l'head
+    file.setFileName(PATH "/1.css");
+
+    //TODO check se il file è aperto per davvero o no
+    file.open(QIODevice::ReadOnly | QIODevice::Text);
+
+    //Leggo il file in head ed home
+    QTextStream in(&file);
+    home_html.append (in.readAll ());
+    head.append (home_html);
+    file.close ();
+
+    /******************************************/
     //Apro il file con l'html della home page
     file.setFileName(PATH "/1");
 
@@ -184,21 +207,48 @@ void and1::init_text(){
     file.open(QIODevice::ReadOnly | QIODevice::Text);
 
     //Leggo il file in str
-    QTextStream in(&file);
-    str.append (in.readAll ());
-
-    //E scrivo la "index"
-    ui->main_view->setHtml (str.toAscii ());
+    QTextStream in2(&file);
+    home_html.append (in.readAll ());
     file.close ();
 
-    ui->homizzah->hide ();
-    ui->book_name->hide();
-    ui->main_view->page ()->mainFrame ()->setScrollBarPolicy ( Qt::Horizontal, Qt::ScrollBarAlwaysOff);
+    /******************************************/
+    //Apro il file con il css di versetti
+    file.setFileName(PATH "/2.css");
+
+    //TODO check se il file è aperto per davvero o no
+    file.open(QIODevice::ReadOnly | QIODevice::Text);
+
+    //Leggo il file in str
+    QTextStream in3(&file);
+    css_versetti.append (in.readAll ());
+    file.close ();
+
+
+    str.clear ();
+    str.append ("<style> a{color: #5BB6E4; text-decoration:none} </style>  <a href=\"some\">");
+    str.append("Homizzah !");
+    str.append ("</a>");
+
+    ui->homizzah->setText (str.toAscii ());
+
+    home();
 
 }
 
 
+void and1::home(){
+    //Scrivo la "index"
 
+    ui->main_view->setHtml (home_html.toAscii ());
+
+    //Nascondo due cosine
+    ui->homizzah->hide ();
+    ui->book_name->hide();
+
+    //Forzo a non vedersi la barra di scroll
+    ui->main_view->page ()->mainFrame ()->setScrollBarPolicy ( Qt::Horizontal, Qt::ScrollBarAlwaysOff);
+
+}
 
 
 
@@ -284,20 +334,13 @@ void and1::on_popup_view_linkClicked(const QUrl &arg1)
 
     str.append ("<style> a{color: #5BB6E4; text-decoration:none} </style>  <a href=\"some\">");
     str.append(val.toString ());
+    str.append(" : ");
+    str.append(arg1.path ());
     str.append ("</a>");
     ui->book_name->setText (str.toAscii ());
     ui->book_name->show ();
 
-    str.clear ();
-
-    str.append ("<style> a{color: #5BB6E4; text-decoration:none} </style>  <a href=\"some\">");
-    str.append("Homizzah !");
-    str.append ("</a>");
-
-    ui->homizzah->setText (str.toAscii ());
-    ui->homizzah->show ();
-
-
+    ui->homizzah->show();
 
     str.clear ();
     str.append ("select italiano_text from testo where libro = ");
@@ -309,27 +352,35 @@ void and1::on_popup_view_linkClicked(const QUrl &arg1)
 
     int i=1;
     str.clear ();
-    str.append ("<style>::-webkit-scrollbar {width: 50px;} ::-webkit-scrollbar-track {-webkit-box-shadow: inset 0 0 6px rgba(200,200,180,1); border-radius: 10px; }::-webkit-scrollbar-thumb {border-radius: 10px;-webkit-box-shadow: inset 0 0 6px rgba(180,180,120,1);} #bla { font-family:\"Helvetica\"; line-height: 140%; font-size:18px; font-weight:400; color:silver} </style><div id=\"bla\"2>");
+
+    str.append (css_versetti);
+    str.append ("<div id=\"bla\">");
     while (query.next ()){
+        str2.clear();
         val =  query.value(0);
 
         str.append ("<br>");
         str.append(QString::number(i));
         str.append ("<br>");
-        str.append (val.toString ());
+            str2.append (val.toString ());
+            str2.replace (QString(" "), QString("  "));
+        str.append (str2);
+        str.append ("");
         i++;
 
     }
     str.replace (QString("\\n"),QString("<br>"));
     str.append("</div>");
 
-    //qDebug (val.toString ().toAscii ());
+    qDebug (str.toAscii ());
     ui->main_view->page ()->mainFrame ()->setScrollBarPolicy ( Qt::Horizontal, Qt::ScrollBarAlwaysOff);
     ui->main_view->setHtml (str);
 
 
 }
 
+
+//Faccio click sul nome di un libro
 void and1::on_book_name_linkActivated(const QString &link)
 {
 
@@ -340,5 +391,5 @@ void and1::on_book_name_linkActivated(const QString &link)
 
 void and1::on_homizzah_linkActivated(const QString &link)
 {
-    init_text();
+    home();
 }

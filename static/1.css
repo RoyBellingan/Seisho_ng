@@ -1,0 +1,111 @@
+<head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+</head>
+<style>
+body{
+background-image: url("body_bg.png");
+background-position: 0 -95px;
+}
+
+full{
+position: relative;
+}
+#full a {
+font-family: Helvetica;
+    background: none;
+    display: inline;
+    float: none;
+    padding-left: 5px;
+    width: 85px;
+    font-size:220%;
+  line-height: 150%;
+}
+@font-face {font-family:androgyne;
+src:
+url(css/androgyne.otf);
+}
+
+#small {
+    position: relative;
+    top: 10px;
+}
+
+#full ul {
+    list-style: none outside none;
+    padding: 0;
+}
+
+#full li {
+width:1200px;
+font-family: Helvetica;
+    font-size: 18px;
+    font-weight: 400;
+    padding: 0px 0 0px 18px;
+margin: 6px 0 4px 0;
+    text-shadow: 1px 1px 1px #000;
+}
+
+#full dl {
+    padding: 0px 0 2px;
+margin: 0px;
+}
+
+#full dt {
+    display: inline;
+    font-size: 12px;
+    font-weight: 400;
+    padding: 0 11px 0 11px;
+    text-shadow: 1px 1px 5px #000;
+}
+
+#pentateuco {
+    color: #FFC341;
+}
+
+#storici {
+    color: #5BB6E4;
+}
+
+#poetici {
+    color: #FF5555;
+    text-shadow: 1px 1px 5px #000;
+}
+
+#profetici {
+    color: #FFDCA8;
+}
+
+#vangeli {
+    color: #17C400;
+}
+
+#lettere {
+    color: #896FFF;
+}
+
+a {
+    color: #EDE5F0; /*#BBBBBB;*/
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+h3 {
+
+    display: inline;
+    margin: 6px 0 0;
+}
+#bla { 
+  font-family:"Droid Sans Mono";
+  line-height: 180%;
+  font-size:26px;
+  font-weight:800;
+}  
+#bla a{
+  color: #FFDCA8; 
+  text-decoration:none
+}
+</style>

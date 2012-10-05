@@ -1,0 +1,232 @@
+<body>
+<div id="full">
+<li id="Pentateuco">
+Pentateuco
+<dl>
+<dt>
+<a id="Pentateuco" name="Genesi" href="1" rel="1" class="jtip">Genesi</a>
+</dt>
+<dt>
+<a id="Pentateuco" name="Esodo" href="2" rel="2" class="jtip">Esodo</a>
+</dt>
+<dt>
+<a id="Pentateuco" name="Levitico" href="3" rel="3" class="jtip">Levitico</a>
+</dt>
+<dt>
+<a id="Pentateuco" name="Numeri" href="4" rel="4" class="jtip">Numeri</a>
+</dt>
+<dt>
+<a id="Pentateuco" name="Deuteronomio" href="5" rel="5" class="jtip">Deuteronomio</a>
+</dt>
+</dl>
+</li>
+<li id="Storici">
+Storici
+<dl>
+<dt>
+<a id="Storici" name="Giosuè" href="6" rel="6" class="jtip">Giosuè</a>
+</dt>
+<dt>
+<a id="Storici" name="Giudici" href="7" rel="7" class="jtip">Giudici</a>
+</dt>
+<dt>
+<a id="Storici" name="Rut" href="8" rel="8" class="jtip">Rut</a>
+</dt>
+<dt>
+<a id="Storici" name="1 Samuele" href="9" rel="9" class="jtip">1 Samuele</a>
+</dt>
+<dt>
+<a id="Storici" name="2 Samuele" href="10" rel="10" class="jtip">2 Samuele</a>
+</dt>
+<dt>
+<a id="Storici" name="1 Re" href="11" rel="11" class="jtip">1 Re</a>
+</dt>
+<dt>
+<a id="Storici" name="2 Re" href="12" rel="12" class="jtip">2 Re</a>
+</dt>
+<dt>
+<a id="Storici" name="1 Cronache" href="13" rel="13" class="jtip">1&nbsp;Cronache </a>
+</dt>
+<dt>
+<a id="Storici" name="2 Cronache" href="14" rel="14" class="jtip">2&nbsp;Cronache  </a>
+</dt>
+<dt>
+<a id="Storici" name="Esdra" href="15" rel="15" class="jtip">Esdra </a>
+</dt>
+<dt>
+<a id="Storici" name="Neemia" href="16" rel="16" class="jtip">Neemia </a>
+</dt>
+<dt>
+<a id="Storici" name="Ester" href="17" rel="17" class="jtip">Ester </a>
+</dt>
+<dt>
+<a id="Storici" name="Giobbe" href="18" rel="18" class="jtip">Giobbe </a>
+</dt>
+</dl>
+</li>
+<li id="Poetici">
+Poetici
+<dl>
+<dt>
+<a id="Poetici" name="Salmi" href="19" rel="19" class="jtip">Salmi</a>
+</dt>
+<dt>
+<a id="Poetici" name="Proverbi" href="20" rel="20" class="jtip">Proverbi</a>
+</dt>
+<dt>
+<a id="Poetici" name="Ecclesiaste" href="21" rel="21" class="jtip">Ecclesiaste</a>
+</dt>
+<dt>
+<a id="Poetici" name="Il Cantico dei Cantici" href="22" rel="22" class="jtip">Il Cantico dei Cantici</a>
+</dt>
+</dl>
+</li>
+<li id="Profetici">
+Profetici
+<dl>
+<dt>
+<a id="Profetici" name="Isaia" href="23" rel="23" class="jtip">Isaia</a>
+</dt>
+<dt>
+<a id="Profetici" name="Geremia" href="24" rel="24" class="jtip">Geremia</a>
+</dt>
+<dt>
+<a id="Profetici" name="Lamentazioni" href="25" rel="25" class="jtip">Lamentazioni</a>
+</dt>
+<dt>
+<a id="Profetici" name="Ezechiele" href="26" rel="26" class="jtip">Ezechiele</a>
+</dt>
+<dt>
+<a id="Profetici" name="Daniele" href="27" rel="27" class="jtip">Daniele</a>
+</dt>
+<dt>
+<a id="Profetici" name="Osea" href="28" rel="28" class="jtip">Osea</a>
+</dt>
+<dt>
+<a id="Profetici" name="Gioele" href="29" rel="29" class="jtip">Gioele</a>
+</dt>
+<dt>
+<a id="Profetici" name="Amos" href="30" rel="30" class="jtip">Amos </a>
+</dt>
+<dt>
+<a id="Profetici" name="Abdia" href="31" rel="31" class="jtip">Abdia</a>
+</dt>
+<dt>
+<a id="Profetici" name="Giona" href="32" rel="32" class="jtip">Giona</a>
+</dt>
+<dt>
+<a id="Profetici" name="Michea" href="33" rel="33" class="jtip">Michea</a>
+</dt>
+<dt>
+<a id="Profetici" name="Naum" href="34" rel="34" class="jtip">Naum </a>
+</dt>
+<dt>
+<a id="Profetici" name="Abacuc" href="35" rel="35" class="jtip">Abacuc</a>
+</dt>
+<dt>
+<a id="Profetici" name="Sofonia" href="36" rel="36" class="jtip">Sofonia</a>
+</dt>
+<dt>
+<a id="Profetici" name="Aggeo" href="37" rel="37" class="jtip">Aggeo</a>
+</dt>
+<dt>
+<a id="Profetici" name="Zaccaria" href="38" rel="38" class="jtip">Zaccaria</a>
+</dt>
+<dt>
+<a id="Profetici" name="Malachia" href="39" rel="39" class="jtip">Malachia </a>
+</dt>
+</dl>
+</li>
+<li id="Vangeli">
+Vangeli
+<dl>
+<dt>
+<a id="Vangeli" name="Matteo" href="40" rel="40" class="jtip">Matteo</a>
+</dt>
+<dt>
+<a id="Vangeli" name="Marco" href="41" rel="41" class="jtip">Marco</a>
+</dt>
+<dt>
+<a id="Vangeli" name="Luca" href="42" rel="42" class="jtip">Luca</a>
+</dt>
+<dt>
+<a id="Vangeli" name="Giovanni" href="43" rel="43" class="jtip">Giovanni</a>
+</dt>
+<dt>
+<a id="Vangeli" name="Atti" href="44" rel="44" class="jtip">Atti</a>
+</dt>
+</dl>
+</li>
+<li id="Lettere">
+Lettere
+<dl>
+<dt>
+<a id="Lettere" name="Romani" href="45" rel="45" class="jtip">Romani</a>
+</dt>
+<dt>
+<a id="Lettere" name="1 Corinti" href="46" rel="46" class="jtip">1&nbsp;Corinti</a>
+</dt>
+<dt>
+<a id="Lettere" name="2 Corinti" href="47" rel="47" class="jtip">2&nbsp;Corinti</a>
+</dt>
+<dt>
+<a id="Lettere" name="Galati" href="48" rel="48" class="jtip">Galati</a>
+</dt>
+<dt>
+<a id="Lettere" name="Efesini" href="49" rel="49" class="jtip">Efesini</a>
+</dt>
+<dt>
+<a id="Lettere" name="Filippesi" href="50" rel="50" class="jtip">Filippesi</a>
+</dt>
+<dt>
+<a id="Lettere" name="Colossesi" href="51" rel="51" class="jtip">Colossesi</a>
+</dt>
+<dt>
+<a id="Lettere" name="1 Tessalonicesi" href="52" rel="52" class="jtip">1&nbsp;Tessalonicesi </a>
+</dt>
+<dt>
+<a id="Lettere" name="2 Tessalonicesi" href="53" rel="53" class="jtip">2&nbsp;Tessalonicesi </a>
+</dt>
+<dt>
+<a id="Lettere" name="1 Timoteo" href="54" rel="54" class="jtip">1&nbsp;Timoteo</a>
+</dt>
+<dt>
+<a id="Lettere" name="2 Timoteo" href="55" rel="55" class="jtip">2&nbsp;Timoteo</a>
+</dt>
+<dt>
+<a id="Lettere" name="Tito" href="56" rel="56" class="jtip">Tito</a>
+</dt>
+<dt>
+<a id="Lettere" name="Filemone" href="57" rel="57" class="jtip">Filemone</a>
+</dt>
+<dt>
+<a id="Lettere" name="Ebrei" href="58" rel="58" class="jtip">Ebrei</a>
+</dt>
+<dt>
+<a id="Lettere" name="Giacomo" href="59" rel="59" class="jtip">Giacomo </a>
+</dt>
+<dt>
+<a id="Lettere" name="1 Pietro" href="60" rel="60" class="jtip">1&nbsp;Pietro </a>
+</dt>
+<dt>
+<a id="Lettere" name="2 Pietro" href="61" rel="61" class="jtip">2&nbsp;Pietro </a>
+</dt>
+<dt>
+<a id="Lettere" name="1 Giovanni" href="62" rel="62" class="jtip">1&nbsp;Giovanni </a>
+</dt>
+<dt>
+<a id="Lettere" name="2 Giovanni" href="63" rel="63" class="jtip">2&nbsp;Giovanni</a>
+</dt>
+<dt>
+<a id="Lettere" name="3 Giovanni" href="64" rel="64" class="jtip">3&nbsp;Giovanni</a>
+</dt>
+<dt>
+<a id="Lettere" name="Giuda" href="65" rel="65" class="jtip">Giuda</a>
+</dt>
+<dt>
+<a id="Lettere" name="Rivelazione" href="66" rel="66" class="jtip">Rivelazione</a>
+</dt>
+</dl>
+</li>
+</div>
+</body>
