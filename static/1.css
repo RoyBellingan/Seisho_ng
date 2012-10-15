@@ -55,7 +55,7 @@ margin: 0px;
     display: inline;
     font-size: 12px;
     font-weight: 400;
-    padding: 0 11px 0 11px;
+    padding: 0 2px 0 2px;
     text-shadow: 1px 1px 5px #000;
 }
 
@@ -107,5 +107,22 @@ h3 {
 #bla a{
   color: #FFDCA8; 
   text-decoration:none
+
+}
+
+.bbx{
+  padding: 14px 18px 14px 18px;
+}
+
+.bbx_m1{
+  padding: 4px;
+}
+
+.bbx_m2{
+  padding: 4px 8px 4px 8px;
+}
+
+.bbx_m3{
+  padding: 4px;
 }
 </style>

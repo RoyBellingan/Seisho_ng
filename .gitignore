@@ -1,0 +1,6 @@
+*.cpp.*
+*.pro.*
+static/
+todo
+*~
+android/
