@@ -13,9 +13,11 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        and1.cpp
+        and1.cpp \
+    globalish.cpp
 
-HEADERS  += and1.h
+HEADERS  += and1.h \
+    globalish.h
 
 FORMS    += and1.ui
 

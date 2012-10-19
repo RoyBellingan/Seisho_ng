@@ -1,11 +1,7 @@
 #include "and1.h"
 #include "ui_and1.h"
 
-
-
 //https://groups.google.com/forum/?fromgroups=#!topic/android-qt/PYHwZSCZvCo per lo scroll
-
-
 
 and1::and1(QWidget *parent) :   QMainWindow(parent),   ui(new Ui::and1){
 
@@ -270,6 +266,7 @@ bool and1::event(QEvent *event) {
 bool KeyPressEater::eventFilter(QObject *obj, QEvent *event) {
 
     and1* w = and1::getInstance();
+
 
     switch (event->type()) {
 
