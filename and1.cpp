@@ -5,6 +5,7 @@
 
 and1::and1(QWidget *parent) :   QMainWindow(parent),   ui(new Ui::and1){
 
+    g=globalish::getInstance ();
 
     //Setto l'immagine di sfondo
     QPalette* palette = new QPalette();
@@ -52,17 +53,6 @@ and1::and1(QWidget *parent) :   QMainWindow(parent),   ui(new Ui::and1){
     init_text ();
 
 
-    //Inizio il database
-    testo = QSqlDatabase::addDatabase("QSQLITE");
-    testo.setDatabaseName(PATH "italiano.sqlite");
-
-    //Non funziona!
-    if(!testo.open()) {
-
-        //        ui->log->appendPlainText("KEK db owned");
-
-    }
-
     //Qualche static
 
     aresx=ui->main_view->width ()/2;
@@ -91,21 +81,7 @@ void and1::capitolibox(QString libro){
     //farewell cookies
     id_book=libro.toInt ();
 
-    //TODO valuta una tabella di lookup ???
-    //accedo al db e vedo quanti capitoli ha questo libro
-
-    str.clear ();
-    str.append ("select count(capitolo) from testo where libro = ");
-    str.append (libro);
-    str.append (" AND versetto =1");
-    //qDebug (str.toAscii ());
-
-
-
-    QSqlQuery query(testo);
-    query.exec(str.toAscii ());
-    query.next ();
-    QVariant val =  query.value(0);
+    int cc=g->chapter_count (id_book);
 
     str.clear ();
     str.append (head);
@@ -118,13 +94,13 @@ void and1::capitolibox(QString libro){
 
 
 
-    if (val.toInt ()>100){
+    if (cc>100){
         //Ma sono i salmi!
         f=1;
     }
 
 
-    for ( j = 1; j < val.toInt ()+1; ++j) {
+    for ( j = 1; j < cc+1; ++j) {
         i++;
         if (i>10){
             i=1;

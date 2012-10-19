@@ -2,8 +2,13 @@
 #include <QApplication>
 
 and1* and1::instance=null;
+globalish* globalish::instance=null;
+
 int main(int argc, char *argv[])
 {
+
+    globalish* g=globalish::getInstance ();
+    g->bootstrap ();
 
     QApplication a(argc, argv);
 

@@ -1,40 +1,8 @@
 #ifndef AND1_H
 #define AND1_H
 
-#include <iostream>
-#include <string>
-#include <sstream>
 
-#include <QMainWindow>
-#include <QString>
-#include <QStringList>
-#include <QFile>
-#include <QTextStream>
-#include <QTextCodec>
-#include <QDir>
-
-#include <QtSql/QSqlDatabase>
-#include <QtSql/QSqlQuery>
-#include <QtSql/QSqlRecord>
-#include <QVariant>
-
-#include <QUrl>
-#include <QWebFrame>
-#include <math.h>
-
-
-#define null 0
-
-#ifdef Q_OS_UNIX
-#define PATH "static/"
-#endif
-
-#ifdef Q_OS_ANDROID
-#define PATH "/mnt/storage/seisho/"
-#endif
-
-
-
+#include<includes.h>
 
 
 namespace Ui {
@@ -102,6 +70,7 @@ private:
 
     void capitolibox(QString libro);
 
+    globalish* g;
     static and1* instance;
 
     //Il css
