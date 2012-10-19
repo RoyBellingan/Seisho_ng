@@ -13,12 +13,13 @@ font-size:18px;
 font-weight:400; 
 color:silver;
 width: 800px;
-
+padding: 0 18px 0 0;
 height:620px;
 overflow-x:scroll;
 
-/*
+
      text-align: justify;
+     /*
     -webkit-column-count: 6;
     -webkit-column-width: 400px;
     -webkit-column-gap: 3em;

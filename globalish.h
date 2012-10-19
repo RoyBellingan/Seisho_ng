@@ -43,9 +43,14 @@ public:
     QString lang2;
 
     QSqlDatabase db_common,db_meine, db_lang1, db_lang2;
-
-
     QString css_versetti;
+
+    bool interlinear;
+    int font_size;
+    int single_lang_width;
+
+
+
 
 
 

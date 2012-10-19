@@ -2,10 +2,13 @@
 
 
 void globalish::bootstrap (){
+
+    interlinear = false;
+    font_size = 18;
+    single_lang_width=800;
+
     db_common_init ();
-
     load_config ();
-
     db_acc_init ();
 }
 
