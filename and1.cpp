@@ -6,7 +6,7 @@
 and1::and1(QWidget *parent) :   QMainWindow(parent),   ui(new Ui::and1){
 
     g=globalish::getInstance ();
-     v=verse::getInstance ();
+    v=verse::getInstance ();
 
     //Setto l'immagine di sfondo
     QPalette* palette = new QPalette();
@@ -32,8 +32,8 @@ and1::and1(QWidget *parent) :   QMainWindow(parent),   ui(new Ui::and1){
 
     //Modifico il frame principale per delegare i link
     QWebPage *page=new QWebPage();
-   // QUrl url = QUrl("http://localhost");
-   // ui->main_view->load (url);
+    // QUrl url = QUrl("http://localhost");
+    // ui->main_view->load (url);
     ui->main_view->setPage (page);
     ui->main_view->page ()->setLinkDelegationPolicy (ui->main_view->page ()->DelegateAllLinks);
 
@@ -72,7 +72,7 @@ and1::~and1()
  */
 void and1::on_main_view_linkClicked(const QUrl &arg1)
 {
-capitolibox (arg1.path ());
+    capitolibox (arg1.path ());
 
 }
 
@@ -123,25 +123,25 @@ void and1::capitolibox(QString libro){
 
     }
 
-j--;
+    j--;
 
 
 
-        if (f==1){
-            sizy=755;
-            sizx=670;
-        }else{
-            sizy=(ceil((j/10)-1))*50+200;
-            if (j<10){
-                sizx=j*50+15;
-            }
-            if(j==10){
-                sizx=500;
-            }
-            if(j>10){
-                sizx=510;
-            }
+    if (f==1){
+        sizy=755;
+        sizx=670;
+    }else{
+        sizy=(ceil((j/10)-1))*50+200;
+        if (j<10){
+            sizx=j*50+15;
         }
+        if(j==10){
+            sizx=500;
+        }
+        if(j>10){
+            sizx=510;
+        }
+    }
 
     ui->popup_view->setFixedWidth (sizx);
     ui->popup_view->setFixedHeight (sizy);
@@ -313,7 +313,7 @@ void and1::on_popup_view_linkClicked(const QUrl &arg1)
     str.append (css_versetti);
 
     str.append (v->chapter_r1 (id_book,arg1.path ().toInt ()));
-   // qDebug (str.toAscii ());
+    // qDebug (str.toAscii ());
     ui->main_view->page ()->mainFrame ()->setScrollBarPolicy ( Qt::Horizontal, Qt::ScrollBarAlwaysOff);
     ui->main_view->setHtml (str);
 

@@ -30,20 +30,20 @@ public:
     }
 
     //
-   bool event(QEvent *event);
-   //mezza risoluzione asse x
-   int aresx;
-   //mezza risoluzione asse y
-   int aresy;
+    bool event(QEvent *event);
+    //mezza risoluzione asse x
+    int aresx;
+    //mezza risoluzione asse y
+    int aresy;
 
-   //libro scelto
-   int id_book;
+    //libro scelto
+    int id_book;
 
-   //capitolo scelto
-   int id_chapter;
+    //capitolo scelto
+    int id_chapter;
 
-   //Ritorna alla home
-   void home();
+    //Ritorna alla home
+    void home();
 
 private slots:
 
@@ -93,7 +93,7 @@ class KeyPressEater : public QObject
 private:
 
 
-    public:
+public:
     and1* w;
 protected:
     bool eventFilter(QObject *obj, QEvent *event);
