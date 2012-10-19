@@ -39,6 +39,8 @@ public:
 
     int chapter_count(int book);
     QString book_name(int book);
+
+    QStringList sl1,sl2,sl;
 };
 
 #endif // VERSE_H

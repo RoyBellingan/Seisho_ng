@@ -7,6 +7,8 @@ void globalish::bootstrap (){
     font_size = 18;
     single_lang_width=800;
 
+    layout_type = "tablet";
+
     db_common_init ();
     load_config ();
     db_acc_init ();
@@ -42,6 +44,8 @@ void globalish::load_config (){
     query.next ();
     val =  query.value(0);
     lang2=val.toString ();
+
+    //TODO una cosa che in auto legge tutti i config e li imposta... senza dover fare una quwery per ognuno...
 
     //memento pattern here... no me ne frego rileggo da db e amen...
 

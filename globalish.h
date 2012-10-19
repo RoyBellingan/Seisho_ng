@@ -48,6 +48,7 @@ public:
     bool interlinear;
     int font_size;
     int single_lang_width;
+    QString layout_type;
 
 
 
