@@ -334,8 +334,8 @@ void and1::on_book_name_linkActivated(const QString &link)
 void and1::on_homizzah_linkActivated(const QString &link)
 {
     home();
-        ui->main_view->show();
-        ui->opt_frame->hide();
+    ui->main_view->show();
+    ui->opt_frame->hide();
 }
 
 
@@ -349,8 +349,16 @@ void and1::on_options_clicked()
 
 void and1::on_opt_salva_clicked()
 {
-    ui->opt_lang1->hide();
-    ui->opt_lang2->hide();
-    ui->opt_interlinear->hide();
+    //ui->opt_lang1
+    //ui->opt_lang2
+
+    if (ui->opt_interlinear->checkState() == Qt::Unchecked){
+        g->interlinear=false;
+    }
+    if (ui->opt_interlinear->checkState() == Qt::Checked){
+        g->interlinear=true;
+    }
+
+
 
 }
