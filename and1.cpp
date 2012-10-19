@@ -6,6 +6,7 @@
 and1::and1(QWidget *parent) :   QMainWindow(parent),   ui(new Ui::and1){
 
     g=globalish::getInstance ();
+     v=verse::getInstance ();
 
     //Setto l'immagine di sfondo
     QPalette* palette = new QPalette();
@@ -81,7 +82,7 @@ void and1::capitolibox(QString libro){
     //farewell cookies
     id_book=libro.toInt ();
 
-    int cc=g->chapter_count (id_book);
+    int cc=v->chapter_count (id_book);
 
     str.clear ();
     str.append (head);
@@ -285,12 +286,13 @@ bool KeyPressEater::eventFilter(QObject *obj, QEvent *event) {
  */
 void and1::on_popup_view_linkClicked(const QUrl &arg1)
 {
+    verse* v=verse::getInstance ();
     ui->popup_view->hide();
 
     str.clear ();
 
     str.append ("<style> a{color: #5BB6E4; text-decoration:none} </style>  <a href=\"some\">");
-    str.append(g->book_name (id_book));
+    str.append(v->book_name (id_book));
     str.append(" : ");
     str.append(arg1.path ());
     str.append ("</a>");
@@ -299,38 +301,13 @@ void and1::on_popup_view_linkClicked(const QUrl &arg1)
 
     ui->homizzah->show();
 
-    str.clear ();
-    str.append ("select italiano_text from testo where libro = ");
-    str.append (QString::number(id_book));
-    str.append (" and capitolo = ");
-    str.append (arg1.path ());
-    //qDebug (str.toAscii ());
-    /*
-    query.exec(str.toAscii ());
 
-    int i=1;
+
     str.clear ();
 
     str.append (css_versetti);
-    str.append ("<div id=\"bla\">");
-    while (query.next ()){
-        str2.clear();
-        val =  query.value(0);
 
-        str.append ("<br>");
-        str.append(QString::number(i));
-        str.append ("<br>");
-            str2.append (val.toString ());
-            str2.replace (QString(" "), QString("  "));
-        str.append (str2);
-        str.append ("");
-        i++;
-
-    }
-    */
-    str.replace (QString("\\n"),QString("<br>"));
-    str.append("</div>");
-
+    str.append (v->chapter_r1 (id_book,arg1.path ().toInt ()));
    // qDebug (str.toAscii ());
     ui->main_view->page ()->mainFrame ()->setScrollBarPolicy ( Qt::Horizontal, Qt::ScrollBarAlwaysOff);
     ui->main_view->setHtml (str);

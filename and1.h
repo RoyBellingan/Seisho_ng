@@ -3,8 +3,8 @@
 
 
 #include<includes.h>
-
-
+#include <globalish.h>
+#include <verse.h>
 namespace Ui {
 class and1;
 }
@@ -71,6 +71,7 @@ private:
     void capitolibox(QString libro);
 
     globalish* g;
+    verse* v;
     static and1* instance;
 
     //Il css

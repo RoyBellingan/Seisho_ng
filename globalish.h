@@ -21,7 +21,7 @@ private:
     void db_acc_init();
 
 
-    QSqlDatabase db_common,db_meine, db_lang1, db_lang2;
+
 
 public:
     ~globalish();
@@ -42,8 +42,11 @@ public:
     QString lang1;
     QString lang2;
 
-    int chapter_count(int book);
-    QString book_name(int book);
+    QSqlDatabase db_common,db_meine, db_lang1, db_lang2;
+
+
+    QString css_versetti;
+
 
 
 

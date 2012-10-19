@@ -74,33 +74,6 @@ void globalish::db_acc_init (){
 }
 
 
-int globalish::chapter_count (int book){
-
-    str.clear ();
-    str.append ("select count(chapter) from verse where book = ");
-    str.append (QString::number(book));
-    str.append (" AND verse =1");
-    db_common.open ();
-    QSqlQuery query(db_common);
-    query.exec(str.toAscii ());
-    query.next ();
-    QVariant val =  query.value(0);
-
-    int cc = val.toInt();
-    return cc;
-}
-
-QString globalish::book_name (int book){
-    str.clear ();
-    str.append ("select name from book_name where id_book = ");
-    str.append (QString::number(book));
-    QSqlQuery query(db_lang1);
-    query.exec(str.toAscii ());
-    query.next ();
-    QVariant val =  query.value(0);
-
-    return val.toString ();
-}
 
 
 

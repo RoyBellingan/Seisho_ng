@@ -14,10 +14,12 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         and1.cpp \
-    globalish.cpp
+    globalish.cpp \
+    verse.cpp
 
 HEADERS  += and1.h \
-    globalish.h
+    globalish.h \
+    verse.h
 
 FORMS    += and1.ui
 

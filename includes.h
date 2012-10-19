@@ -24,8 +24,6 @@
 #include <QWebFrame>
 #include <math.h>
 
-#include <globalish.h>
-
 
 
 

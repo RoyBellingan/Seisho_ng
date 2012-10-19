@@ -3,7 +3,7 @@
 
 and1* and1::instance=null;
 globalish* globalish::instance=null;
-
+verse* verse::instance=null;
 int main(int argc, char *argv[])
 {
 
