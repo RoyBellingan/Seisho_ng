@@ -43,6 +43,7 @@ public:
     QString lang2;
 
     int chapter_count(int book);
+    QString book_name(int book);
 
 
 

@@ -92,13 +92,10 @@ void and1::capitolibox(QString libro){
 
     int j,f=0;
 
-
-
     if (cc>100){
         //Ma sono i salmi!
         f=1;
     }
-
 
     for ( j = 1; j < cc+1; ++j) {
         i++;
@@ -290,24 +287,10 @@ void and1::on_popup_view_linkClicked(const QUrl &arg1)
 {
     ui->popup_view->hide();
 
-
-    str.clear ();
-    str.append ("select nome from libri_ita where id_libro = ");
-    str.append (QString::number(id_book));
-    //qDebug (str.toAscii ());
-
-
-    QSqlQuery query(testo);
-    query.exec(str.toAscii ());
-    query.next ();
-    QVariant val =  query.value(0);
-
-    //qDebug (val.toString ().toAscii ());
-
     str.clear ();
 
     str.append ("<style> a{color: #5BB6E4; text-decoration:none} </style>  <a href=\"some\">");
-    str.append(val.toString ());
+    str.append(g->book_name (id_book));
     str.append(" : ");
     str.append(arg1.path ());
     str.append ("</a>");
@@ -322,6 +305,7 @@ void and1::on_popup_view_linkClicked(const QUrl &arg1)
     str.append (" and capitolo = ");
     str.append (arg1.path ());
     //qDebug (str.toAscii ());
+    /*
     query.exec(str.toAscii ());
 
     int i=1;
@@ -343,6 +327,7 @@ void and1::on_popup_view_linkClicked(const QUrl &arg1)
         i++;
 
     }
+    */
     str.replace (QString("\\n"),QString("<br>"));
     str.append("</div>");
 
