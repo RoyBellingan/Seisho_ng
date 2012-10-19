@@ -57,6 +57,10 @@ private slots:
 
     void on_homizzah_linkActivated(const QString &link);
 
+    void on_options_clicked();
+
+    void on_opt_salva_clicked();
+
 private:
     void init_text();
 

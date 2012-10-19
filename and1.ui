@@ -139,6 +139,102 @@
      <string>Homizzah</string>
     </property>
    </widget>
+   <widget class="QWidget" name="opt_frame" native="true">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>110</y>
+      <width>541</width>
+      <height>421</height>
+     </rect>
+    </property>
+    <widget class="QComboBox" name="opt_lang1">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>30</y>
+       <width>201</width>
+       <height>27</height>
+      </rect>
+     </property>
+     <item>
+      <property name="text">
+       <string>Italiano</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QComboBox" name="opt_lang2">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>110</y>
+       <width>201</width>
+       <height>27</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <item>
+      <property name="text">
+       <string>Commenti</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QCheckBox" name="opt_interlinear">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>180</y>
+       <width>121</width>
+       <height>26</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: #5BB6E4;</string>
+     </property>
+     <property name="text">
+      <string>Interlineare</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="opt_salva">
+     <property name="geometry">
+      <rect>
+       <x>430</x>
+       <y>370</y>
+       <width>93</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Salva</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QPushButton" name="options">
+    <property name="geometry">
+     <rect>
+      <x>1070</x>
+      <y>40</y>
+      <width>171</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>22</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: #5BB6E4;</string>
+    </property>
+    <property name="text">
+     <string>Options</string>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
+    </property>
+   </widget>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>

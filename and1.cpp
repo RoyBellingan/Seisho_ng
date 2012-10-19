@@ -19,6 +19,7 @@ and1::and1(QWidget *parent) :   QMainWindow(parent),   ui(new Ui::and1){
     ui->setupUi(this);
     ui->popup_view->hide ();
     ui->book_name->hide ();
+    ui->opt_frame->hide();
 
 
     //Configuro UTF - 8 per tutti gli stream testuali
@@ -333,4 +334,23 @@ void and1::on_book_name_linkActivated(const QString &link)
 void and1::on_homizzah_linkActivated(const QString &link)
 {
     home();
+        ui->main_view->show();
+        ui->opt_frame->hide();
+}
+
+
+void and1::on_options_clicked()
+{
+    ui->main_view->hide();
+    ui->homizzah->show();
+    ui->book_name->hide();
+    ui->opt_frame->show();
+}
+
+void and1::on_opt_salva_clicked()
+{
+    ui->opt_lang1->hide();
+    ui->opt_lang2->hide();
+    ui->opt_interlinear->hide();
+
 }

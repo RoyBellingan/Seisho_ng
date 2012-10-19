@@ -32,6 +32,9 @@ public:
     verse_coord versetto;
     verse_coord id_verse2coord(int id_verse);
     int coord2id_verse(int book, int chapter,int verse );
+
+    int* coord2id_verse (int book, int chapter);
+
     QString str,str1,str2,str3;
 
     QString chapter_r1(int book, int chapter);

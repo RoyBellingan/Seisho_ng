@@ -24,9 +24,7 @@ verse_coord verse::id_verse2coord (int id_verse){
 }
 
 int verse::coord2id_verse (int book, int chapter, int verse){
-    versetto.book=book;
-    versetto.chapter=chapter;
-    versetto.verse=verse;
+
     QSqlQuery query(g->db_common);
     str.clear ();
     str.append ("select id_verse from verse where book = ");
@@ -43,7 +41,27 @@ int verse::coord2id_verse (int book, int chapter, int verse){
 
     return versetto.id_verse;
 }
+//in overload we trust
+int* verse::coord2id_verse (int book, int chapter){
 
+    QSqlQuery query(g->db_common);
+    str.clear ();
+    str.append ("select min(id_verse),max(id_verse) from verse where book = ");
+    str.append (QString::number(book));
+    str.append (" and chapter = ");
+    str.append (QString::number(chapter));
+
+    query.exec(str.toAscii ());
+    query.next ();
+
+    int* p;
+    int a[2];
+    p=a;
+    a[0]=query.value (0).toInt ();
+    a[1]=query.value (1).toInt ();
+
+    return p;
+}
 
 int verse::chapter_count (int book){
 
@@ -75,15 +93,18 @@ QString verse::book_name (int book){
 QString verse::chapter_r1(int book, int chapter){
 
     int v_init, v_end,delta;
-    QVariant val;
+    int* vv=coord2id_verse (book,chapter);
+
 
     //ID extension of this chapter
     //notice the -1 for using the > only operator
-    v_init=coord2id_verse (book,chapter,1) - 1;
-    v_end=coord2id_verse (book,chapter+1,1);
+
+    v_init=vv[0]-1;
+    v_end=vv[1];
     delta=v_end-1-v_init;
 
     //Get the verse text
+    QVariant val;
     str.clear ();
     str.append ("select text,id_verse from text where id_verse > ");
     str.append (QString::number(v_init));
@@ -158,6 +179,6 @@ QString verse::chapter_r1(int book, int chapter){
     str.append ("</p>\n");
     str.append("</div>");
 
-    qDebug (str.toAscii ());
+   // qDebug (str.toAscii ());
     return str;
 }
