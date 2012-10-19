@@ -126,17 +126,17 @@ QString verse::chapter_r1(int book, int chapter){
     int j=0;
     int verse_id;
     str.clear ();
-
-    str.append ("<div id=\"bla\">");
+    //style=\"width:1200px\"
+    str.append ("<div id=\"bla\" >");
     //for each verse extracted
     str.append("<p>\n"); //inizio SICURAMENTE un nuovo paragrafo
     while (query_text.next ()){
 
         i++; //il numero di versetto
-        verse_id=query_text.value(0).toInt ();
-
-        str.append ("<span class=\"class_a_cap\" id=\"id_a_cap\">"); //lo span che identifica il numero_versetto
-        str.append (i);
+        verse_id=query_text.value(1).toInt ();
+// id=\"id_a_cap\"
+        str.append ("<span class=\"cpp\" >"); //lo span che identifica il numero_versetto
+        str.append (QString::number(i));
         str.append ("</span>\n");
 
         str2.clear();
@@ -144,7 +144,7 @@ QString verse::chapter_r1(int book, int chapter){
         str2.append (val.toString ());
         str2.replace (QString(" "), QString("  "));
 
-        str.append ("<span class=\"$this->class_ver\" id=\"$this->id_ver\">\n");
+        str.append ("<span class=\"ver\">\n");
 
         str.append (str2); //qui il coso per mettere il text_hyper per la concordanza
         str.append ("</span>\n");
@@ -158,5 +158,6 @@ QString verse::chapter_r1(int book, int chapter){
     str.append ("</p>\n");
     str.append("</div>");
 
+    qDebug (str.toAscii ());
     return str;
 }

@@ -25,5 +25,18 @@ overflow-x:scroll;
     -webkit-column-gap: 3em;
 */
 } 
+.cpp{
+    color: #6EDFBC;
+    font-size: 120%;
+    font-weight: 400;
+    padding-left: 0.4em;
+}
+
+
+p{
+  margin: 12px 0;
+    text-indent: 2em;
+}
+
 
 </style>
