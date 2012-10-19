@@ -46,6 +46,7 @@ and1::and1(QWidget *parent) :   QMainWindow(parent),   ui(new Ui::and1){
 
     //Configuro l'event filter
     KeyPressEater *keyPressEater = new KeyPressEater();
+    keyPressEater->w=null;
     ui->main_view->installEventFilter(keyPressEater);
     //ui->->installEventFilter(keyPressEater);
 
@@ -239,7 +240,11 @@ bool and1::event(QEvent *event) {
 
 bool KeyPressEater::eventFilter(QObject *obj, QEvent *event) {
 
-    and1* w = and1::getInstance();
+    if(w == null){
+        w = and1::getInstance();
+    }
+
+
 
 
     switch (event->type()) {

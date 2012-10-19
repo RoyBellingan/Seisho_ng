@@ -10,14 +10,7 @@ class and1;
 }
 
 
-class KeyPressEater : public QObject
-{
-    Q_OBJECT
 
-
-protected:
-    bool eventFilter(QObject *obj, QEvent *event);
-};
 
 class and1 : public QMainWindow
 {
@@ -93,5 +86,16 @@ private:
 };
 
 
+class KeyPressEater : public QObject
+{
+    Q_OBJECT
 
+private:
+
+
+    public:
+    and1* w;
+protected:
+    bool eventFilter(QObject *obj, QEvent *event);
+};
 #endif // AND1_H
