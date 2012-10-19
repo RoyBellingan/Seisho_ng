@@ -313,7 +313,8 @@ void and1::on_popup_view_linkClicked(const QUrl &arg1)
 
     str.append (css_versetti);
 
-    str.append (v->chapter_r1 (id_book,arg1.path ().toInt ()));
+    str.append (v->chapter(id_book,arg1.path ().toInt ()));
+
     // qDebug (str.toAscii ());
     ui->main_view->page ()->mainFrame ()->setScrollBarPolicy ( Qt::Horizontal, Qt::ScrollBarAlwaysOff);
     ui->main_view->setHtml (str);

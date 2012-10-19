@@ -37,8 +37,10 @@ public:
 
     QString str,str1,str2,str3;
 
+    QString chapter(int book, int chapter);
     QString chapter_r1(int book, int chapter);
-    QString chapter_r1(int id_verse);
+    QString chapter_r2(int book, int chapter);
+    QString chapter_r0(int book, int chapter);
 
     int chapter_count(int book);
     QString book_name(int book);

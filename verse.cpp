@@ -182,3 +182,35 @@ QString verse::chapter_r1(int book, int chapter){
    // qDebug (str.toAscii ());
     return str;
 }
+
+
+QString verse::chapter_r2(){
+
+}
+
+
+QString verse::chapter_r0(){
+
+}
+
+
+
+QString verse::chapter(int book, int chapter){
+
+    QString chap;
+    //oh yeah!
+    if (g->interlinear == true){
+        if (g->lang2 == "0"){ //comment
+            chap = chapter_r0 (book, chapter);
+        }else{
+            chap = chapter_r2 (book, chapter);
+        }
+
+    }else{
+        chap = chapter_r1 (book, chapter);
+    }
+
+
+    return chap;
+
+}
