@@ -6,8 +6,11 @@ void globalish::bootstrap (){
     interlinear = false;
     font_size = 18;
     single_lang_width=800;
+    interlinear_width=1235;
 
     layout_type = "tablet";
+
+    interlinear_layout=0;
 
     db_common_init ();
     load_config ();
@@ -44,6 +47,16 @@ void globalish::load_config (){
     query.next ();
     val =  query.value(0);
     lang2=val.toString ();
+
+    query.exec("select value from config where id_conf=3");
+    query.next ();
+    val =  query.value(0);
+    if (val.toString() == "1"){
+    interlinear=true;
+    }else{
+        interlinear=false;
+    }
+
 
     //TODO una cosa che in auto legge tutti i config e li imposta... senza dover fare una quwery per ognuno...
 

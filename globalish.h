@@ -47,10 +47,17 @@ public:
 
     bool interlinear;
     int font_size;
+
     int single_lang_width;
+    int interlinear_width;
+
+    // Tablet, desktop ecc...
     QString layout_type;
 
-
+    /**
+     * @brief Raggruppamento dei paragrafi 0 default, 1 versetti sciolti
+     */
+    int interlinear_layout;
 
 
 
