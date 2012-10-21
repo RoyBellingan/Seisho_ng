@@ -39,28 +39,21 @@ public:
 
     QString str,str1,str2,str3;
 
-    QString chapter(int book, int chapter);
+    QString chapter(int book_n, int chapter_n);
     QString chapter_r1(int book, int chapter);
     QString chapter_r2(int book, int chapter);
     QString chapter_r0(int book, int chapter);
 
     QString chapter_text(int book, int chapter);
+    QStringList* chapter_verse;
 
     int chapter_count(int book);
     QString book_name(int book);
 
     QStringList sl1,sl2,sl;
 
-
-
-
-
-
-
-
-
-
-
+    int* verse_id_ar;
+    int** spacer;
 
 
 
