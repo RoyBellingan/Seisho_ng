@@ -42,6 +42,11 @@ public:
     QString lang1;
     QString lang2;
 
+    /**
+     * @brief Do the language is modificable ?
+     */
+    int lang2_type;
+
     QSqlDatabase db_common,db_meine, db_lang1, db_lang2;
     QString css_versetti;
 

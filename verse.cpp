@@ -106,7 +106,7 @@ QString verse::chapter_r1(int book, int chapter){
     //Get the verse text
     QVariant val;
     str.clear ();
-    str.append ("select text,id_verse from text where id_verse > ");
+    str.append ("select text,id_verse from bible where id_verse > ");
     str.append (QString::number(v_init));
     str.append (" limit ");
     str.append (QString::number(delta));
@@ -281,6 +281,8 @@ QString verse::chapter_r2(int book, int chapter){
 
  }
 
+/** I'm using a "modificable language" such as side note or a translation work"
+ */
 QString verse::chapter_r0(int book, int chapter){
     int v_init, v_end,delta;
     int* vv=coord2id_verse (book,chapter);
@@ -380,7 +382,7 @@ QString verse::chapter(int book, int chapter){
     QString chap;
     //oh yeah!
     if (g->interlinear == true){
-        if (g->lang2 == "0"){ //comment
+        if (g->lang2_type == 1){ //comment
             chap = chapter_r0 (book, chapter);
         }else{
             chap = chapter_r2 (book, chapter);

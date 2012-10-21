@@ -91,6 +91,16 @@ void globalish::db_acc_init (){
     nyan = db_lang2.isValid ();
     zz = db_lang2.tables ();
 
+    QSqlQuery query(db_lang2);
+
+    query.exec("select value from config where id_conf=1");
+    query.next ();
+    if (query.value(0).toInt() == 1){
+        lang2_type=1;
+    }else{
+        lang2_type=0;
+    }
+
 }
 
 
