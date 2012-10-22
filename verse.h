@@ -44,8 +44,8 @@ public:
     QString chapter_r2(int book, int chapter);
     QString chapter_r0(int book, int chapter);
 
-    QString chapter_text(int book, int chapter);
-    QStringList* chapter_verse;
+    QStringList chapter_text(int book, int chapter);
+    //QStringList chapter_verse;
 
     int chapter_count(int book);
     QString book_name(int book);
@@ -53,7 +53,7 @@ public:
     QStringList sl1,sl2,sl;
 
     int* verse_id_ar;
-    int** spacer;
+    //int** spacer;
 
 
 

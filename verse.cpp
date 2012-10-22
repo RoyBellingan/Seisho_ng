@@ -91,7 +91,7 @@ QString verse::book_name (int book){
 }
 
 
-QString verse::chapter_text(int book, int chapter){
+QStringList verse::chapter_text(int book, int chapter){
     int v_init, v_end,delta;
     int* vv=coord2id_verse (book,chapter);
     //ID extension of this chapter
@@ -110,11 +110,13 @@ QString verse::chapter_text(int book, int chapter){
     QSqlQuery query_text(g->db_lang1);
     query_text.exec(str.toAscii ());
 
-    chapter_verse=new QStringList();
+
+    QStringList chapter_verse;
+    //chapter_verse=new QStringList();
     verse_id_ar= new int [151];
     int i=0;
     while (query_text.next ()){
-        chapter_verse->append(query_text.value(0).toString());
+        chapter_verse.append(query_text.value(0).toString());
         verse_id_ar[i]=query_text.value(1).toInt();
     }
     //Get the spacer
@@ -136,25 +138,30 @@ QString verse::chapter_text(int book, int chapter){
     query_spc.exec(str.toAscii ());
 
     i=0;
-    spacer = new int* [spacer_num];
-    for (i=0; i< spacer_num+1; i++){
-        spacer[i]=new int(2);
-    }
+//    spacer = new int* [spacer_num+1];
+//    for (i=0; i< spacer_num+1; i++){
+//        spacer[i]=new int[2];
+//    }
 
-    i=0;
-    while (query_spc.next ()){
+//    i=0;
+//    while (query_spc.next ()){
 
-        spacer[i][0]=query_spc.value (0).toInt ();
-        spacer[i][1]=query_spc.value (1).toInt ();
-        i++;
-    }
-    spacer[i][1]=160; //altrimenti non prende l'ultimo spacer
+//        spacer[i][0]=query_spc.value (0).toInt ();
+//        spacer[i][1]=query_spc.value (1).toInt ();
+//        i++;
+//    }
+
+
+    //spacer[i][1]=160; //altrimenti non prende l'ultimo spacer
+    query_spc.~QSqlQuery();
+
+    return chapter_verse;
 }
 
 
 QString verse::chapter_r1(int book, int chapter){
 
-    chapter_text (book,chapter);
+    QStringList chapter_verse = chapter_text (book,chapter);
     int i=0;
     int j=0,k=0;
     int verse_id;
@@ -163,7 +170,7 @@ QString verse::chapter_r1(int book, int chapter){
     str.append ("<div id=\"bla\" >");
     //for each verse extracted
     str.append("<p>\n"); //inizio SICURAMENTE un nuovo paragrafo
-    for (int i = 0; i < chapter_verse->size(); ++i){
+    for (int i = 0; i < chapter_verse.size(); ++i){
         k=i+1;
         verse_id=verse_id_ar[i];
         // id=\"id_a_cap\"
@@ -173,7 +180,7 @@ QString verse::chapter_r1(int book, int chapter){
 
         str2.clear();
 
-        str2.append (chapter_verse->at(i));
+        str2.append (chapter_verse.at(i));
         str2.replace (QString(" "), QString("  "));
 
         str.append ("<span class=\"ver\">\n");
@@ -181,10 +188,10 @@ QString verse::chapter_r1(int book, int chapter){
         str.append (str2); //qui il coso per mettere il text_hyper per la concordanza
         str.append ("</span>\n");
 
-        if (spacer[j][1]==verse_id){ //se sono alla fine di un paragrafo
-            str.append("</p>\n<p>\n");
-            j++;
-        }
+//        if (spacer[j][1]==verse_id){ //se sono alla fine di un paragrafo
+//            str.append("</p>\n<p>\n");
+//            j++;
+//        }
 
     }
     str.append ("</p>\n");
@@ -241,7 +248,7 @@ QString verse::chapter_r2(int book, int chapter){
 /** I'm using a "modificable language" such as side note or a translation work"
  */
 QString verse::chapter_r0(int book, int chapter){
-    chapter_text (book,chapter);
+    QStringList chapter_verse=chapter_text (book,chapter);
 
 
     int i=0;
@@ -252,7 +259,7 @@ QString verse::chapter_r0(int book, int chapter){
     str.append ("<div id=\"bla\" style=\"width:" + QString::number(g->interlinear_width) + "px\">");
     //for each verse extracted
     str.append("<p>\n"); //inizio SICURAMENTE un nuovo paragrafo
-    for (int i = 0; i < chapter_verse->size(); ++i){
+    for (int i = 0; i < chapter_verse.size(); ++i){
         k=i+1;
         verse_id=verse_id_ar[i];
         // id=\"id_a_cap\"
@@ -260,25 +267,28 @@ QString verse::chapter_r0(int book, int chapter){
         str.append (QString::number(k));
         str.append ("</span>\n");
 
-        str2.clear();
-
-        str2.append (chapter_verse->at(i));
-        str2.replace (QString(" "), QString("  "));
-
         str.append ("<span class=\"ver\">\n");
 
-        str.append (str2); //qui il coso per mettere il text_hyper per la concordanza
+
+      //  str2.clear();
+
+      //  str2.append ();
+        //str2.replace (QString(" "), QString("  "));
+
+        str.append (chapter_verse.at(i)); //qui il coso per mettere il text_hyper per la concordanza
         str.append ("</span>\n");
 
-        if (spacer[j][1]==verse_id){ //se sono alla fine di un paragrafo
-            str.append("</p>\n<p>\n");
-            j++;
-        }
+//        if (spacer[j][1]==verse_id){ //se sono alla fine di un paragrafo
+//            str.append("</p>\n<p>\n");
+//            j++;
+//        }
 
     }
     str.append ("</p>\n");
     str.append("</div>");
 
+    //delete spacer;
+    //delete chapter_verse;
     // qDebug (str.toAscii ());
     return str;
 }
